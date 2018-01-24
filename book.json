@@ -16,10 +16,7 @@
     "editlink": {
       "base": "https://github.com/BlueWhaleRobot/ros2/edit/master/content",
       "label": "编辑本页"
-    },
-    "baidu": {
-      "token": "a9787f0ab45d5e237bab522431d0a7ec"
-    },
+    }，
     "sharing": {
       "weibo": true,
       "twitter": false,
