@@ -16,7 +16,7 @@
     "editlink": {
       "base": "https://github.com/BlueWhaleRobot/ros2/edit/master/content",
       "label": "编辑本页"
-    }，
+    },
     "sharing": {
       "weibo": true,
       "twitter": false,
