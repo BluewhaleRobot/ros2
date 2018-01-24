@@ -7,11 +7,11 @@
     "github",
     "editlink",
     "prism",
-    "downloadpdf",
+    "downloadpdf"
   ],
   "pluginsConfig": {
     "github": {
-      "url": "https://github.com/BlueWhaleRobot/ros2"，
+      "url": "https://github.com/BlueWhaleRobot/ros2"
     },
     "editlink": {
       "base": "https://github.com/BlueWhaleRobot/ros2/edit/master/content",
