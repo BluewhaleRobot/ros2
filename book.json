@@ -23,8 +23,8 @@
       "facebook": false
     },
     "downloadpdf": {
-      "base": "https://github.com/BlueWhaleRobot/ros2/edit/master/content",
-      "label": "Download PDF",
+      "base": "https://doc.bwbot.org/pdf/ros2",
+      "label": "下载PDF",
       "multilingual": false
     }
   }
