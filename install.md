@@ -108,6 +108,7 @@ Chocolatey 是一个windows下的软件包管理程序。可以通过他们的�
 ```
 choco install -y python
 ```
+注意如果安装失败，比如我就遇到了这个情况。你可以手动安装，直接下载Python官网的安装包，然后安装，不过要安装到C:\Python36这个路径下面。
 
 安装OpenSSL
 
@@ -144,47 +145,78 @@ Microsoft 提供了一个Visual Studio的免费版本，叫做community。我们
 
 #### eProsima FastRTPS & Boost\(只能在beta-1或之后的版本中使用\)
 
-FastRTPS
+FastRTPS 依赖于boost库。在[这里](https://sourceforge.net/projects/boost/files/boost-binaries/1.61.0/boost_1_61_0-msvc-14.0-64.exe/download?use_mirror=nchc)下载安装包后安装。
 
+这个安装包默认安装在C:\local。安装完成后添加下面的环境变量到系统中。
+```
+PATH=C:\local\boost_1_61_0\lib64-msvc-14.0
+```
+#### Adlink OpenSplice
+如果你想使用默认的DDS程序即上面的FastRTPS那么你不需要进行下面的操作。
+如果你想使用OpenSplice作为DDS软件。你需要下载最新的版本(ROS2要求的最低版本为6.7.170912).解压到C:\dev\opensplice67，注意文件夹的层级。你的文件夹结构应该如下图所示
+![](/assets/splice.png)
 
+### 安装OpenCV
+之后的教程例子有些依赖于OpenCV. 你可以下载一个预先编译好的版本
+https://github.com/ros2/ros2/releases/download/release-beta2/opencv-2.4.13.2-vc14.VS2015.zip
+如果你使用的是预先编译好的ROS版本。那么你需要设置下面几个环境变量来告诉ROS2在哪里找OpenCV的库。假设你把OpenCV解压到C:\dev\文件夹下。你需要在PATH环境变量里面添加下面的变量`c:\dev\opencv-2.4.13.2-vc14.VS2015\x64\vc14\bin`
 
+### 安装依赖
+有些依赖文件并不在Chocolatey的软件库里面为了简化安装过程，我们提供了下面的Chocolatey软件包。
 
+你可以在[这里](https://github.com/ros2/choco-packages/releases/latest)下载对应的软件包。
+* asio.1.10.6.nupkg
+* eigen-3.3.3.nupkg
+* tinyxml-usestl.2.6.2.nupkg
+* tinyxml2.4.1.0.nupkg
+下载完成之后重新打开一个具有管理员权限的命令行程序，然后运行下面的语句
+```
+choco install -y -s <PATH\TO\DOWNLOADS\> asio eigen tinyxml-usestl tinyxml2
+```
+注意把`<PATH\TO\DOWNLOADS>`替换成你实际的下载位置。
+你还需要安装`pip`和`yaml`
+```
+python -m pip install -U pyyaml setuptools
+```
+安装时可能会出错，一般是编码的问题，你可以执行下面的语句设置命令行程序的编码
+```
+chcp 65001  //换成65001代码页
+chcp 437    //换成美国英语
+```
+设置完成之后再执行上面的指令安装。
 
+### 下载ROS2
+* 进入ROS2的发布页面: https://github.com/ros2/ros2/releases
+* 下载最新的Windows软件包
+* 解压这个zip文件（推荐解压到C:\dev\ros2里面）
 
+## 设置ROS2的环境
+打开一个命令行程序然后source ROS2 的配置文件来自动配置好工作空间。
+注意下面的指令只能通过cmd程序执行，powershell没法运行。
+```
+call C:\dev\ros2\local_setup.bat
+```
+执行过程中可能会提示找不到路径的错误。没关系可以继续进行下面的操作。
+如果你下载了一个有OpenSplice支持的版本，而且你想用OpenSplice作为DDS程序，那么你可以执行下面的语句。反之则不用执行。
+```
+call "C:\opensplice67\HDE\x86_64.win64\release.bat"
+```
+这个语句要在上面一条语句执行完成之后才行执行。
 
+## 尝试运行简单的例子程序
+打开一个命令行程序，按照上面的说明设置好ROS2的环境。然后执行一个talker程序
+```
+ros2 run demo_nodes_cpp talker
+```
+再打开一个命令行，执行一个listener程序
+```
+ros2 run demo_nodes_py listener
+```
+![](/assets/install_windows_talker.png)
+![](/assets/install_windows_listener.png)
+你可以看到talker程序发布信息,listener程序说明自己接收到了对应的信息。
+以前节点的通信通过master去实现，现在可以看到已经不需要master了。而且你可以尝试在不同的电脑上执行这个程序。不同电脑上的节点间不需要任何配置就可以通信了。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### 常见问题
+* 如果你由于缺少dll而无法启动例子程序，那么请确认上面的软件包依赖比如OpenCV已经添加到你的PATH环境变量中。
+* 如果你忘记了执行local_setup.bat，那么例子程序可能会立即崩溃停止运行。
