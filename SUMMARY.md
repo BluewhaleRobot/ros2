@@ -1,5 +1,5 @@
 # Summary
 
 * [Introduction](README.md)
-* [test](test.md)
+* [安装](test.md)
 
