@@ -38,7 +38,7 @@
   },
   "pdf": {
     "pageNumbers": true,
-    "fontSize": 18,
+    "fontSize": 12,
     "paperSize": "a4",
     "margin": {
       "right": 30,
