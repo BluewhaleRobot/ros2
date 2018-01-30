@@ -1,13 +1,16 @@
 {
   "title": "ROS2 中文指南",
   "description": "ROS2是ROS的下一个版本，目前已经发布",
-  "language": "zh-cn",
+  "language": "zh",
   "gitbook": "3.x.x",
   "plugins": [
     "github",
     "editlink",
     "prism",
-    "downloadpdf"
+    "downloadpdf",
+    "yahei",
+    "katex",
+    "-search"
   ],
   "pluginsConfig": {
     "github": {
@@ -26,6 +29,22 @@
       "base": "https://doc.bwbot.org/pdf/ros2",
       "label": "下载PDF",
       "multilingual": false
+    },
+    "fontSettings": {
+      "theme": "white",
+      "family": "msyh",
+      "size": 2
+    }
+  },
+  "pdf": {
+    "pageNumbers": true,
+    "fontSize": 18,
+    "paperSize": "a4",
+    "margin": {
+      "right": 30,
+      "left": 30,
+      "top": 30,
+      "bottom": 50
     }
   }
 }
