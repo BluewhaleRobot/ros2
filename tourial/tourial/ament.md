@@ -112,7 +112,7 @@ src/ament/ament_tools/scripts/ament.py test --skip-build --skip-install
 
 当ament编译完成之后，生成的文件会在install文件夹里面。
 为了能够使用你编译的文件，你需要把`install/bin`添加到你的系统路径里面去。
-Ament会在instal文件夹中自动生成bash文件，用来帮助你配置环境变量。
+Ament会在install文件夹中自动生成bash文件，用来帮助你配置环境变量。
 这些文件会向你的系统路径和库路径添加必要的元素。
 
 ```bash
