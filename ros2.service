@@ -5,7 +5,7 @@ Description=ROS2 gitbook service
 Type=simple
 User=bwbot
 WorkingDirectory=/home/bwbot/data/src/gitbook/ros2
-ExecStart=/usr/local/bin/gitbook --port 22229 serve
+ExecStart=/usr/local/bin/gitbook --port 22229 --lrport 22239 serve
 
 [Install]
 WantedBy=multi-user.target
