@@ -1,10 +1,8 @@
 # Summary
 
-## 引言
-  * [引言](README.md)
+* [引言](README.md)
 
-## 安装
-  * [安装](install.md)
+* [安装](install.md)
 
 ## 教程
   - 关于ROS2

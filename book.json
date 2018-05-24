@@ -10,7 +10,9 @@
     "downloadpdf",
     "yahei",
     "katex",
-    "-search"
+    "search",
+    "anchor-navigation-ex",
+    "-live-reload"
   ],
   "pluginsConfig": {
     "github": {
@@ -34,6 +36,9 @@
       "theme": "white",
       "family": "msyh",
       "size": 2
+    },
+    "anchor-navigation-ex": {
+      "showLevel": false
     }
   },
   "pdf": {
